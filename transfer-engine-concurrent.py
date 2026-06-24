@@ -9,7 +9,7 @@ from yr.datasystem import TransferEngine
 def run_benchmark(rank: int, world_size: int, master_ip: str, master_port: int):
     # 1. Setup PyTorch Distributed (used purely for sharing pointers and synchronizing)
     torch_npu.npu.set_device(rank)
-    dist.init_process_group(backend="hccl", rank=rank, world_size=world_size, init_method=f"tcp://{master_ip}:{master_port}")
+    dist.init_process_group(backend="gloo", rank=rank, world_size=world_size, init_method=f"tcp://{master_ip}:{master_port}")
     
     root_rank = 0
     tensor_size = 2000 * 1024 * 1024  # 400 MB payload (400M uint8 elements)
@@ -26,13 +26,13 @@ def run_benchmark(rank: int, world_size: int, master_ip: str, master_port: int):
     # 3. Allocate buffers and Register Memory (Seed only)
     if rank == root_rank:
         # Owner allocates payload and registers the memory with TransferEngine
-        tensor = torch.arange(tensor_size, dtype=torch.uint8, device=f"npu:{rank}")
+        tensor = torch.arange(tensor_size, dtype=torch.float32, device=f"npu:{rank}")
         src_addr = tensor.data_ptr()
         engine.register_memory(src_addr, tensor_size)
         print(f"[Seed] Registered memory at pointer: {src_addr}")
     else:
         # Requesters allocate empty buffers
-        tensor = torch.zeros(tensor_size, dtype=torch.uint8, device=f"npu:{rank}")
+        tensor = torch.zeros(tensor_size, dtype=torch.float32, device=f"npu:{rank}")
         src_addr = 0
         
     # 4. Share the src_addr pointer from seed to clients via PyTorch control plane
@@ -50,7 +50,7 @@ def run_benchmark(rank: int, world_size: int, master_ip: str, master_port: int):
         
         # All clients hit this command simultaneously.
         # The TransferEngine uses CANN IPC to pull directly from the seed's HBM.
-        rc = engine.transfer_sync_read(seed_address, tensor.data_ptr(), shared_src_addr, tensor_size)
+        rc = engine.transfer_sync_read(seed_address, tensor.data_ptr(), shared_src_addr, tensor_size*4)
         
         t_end = time.perf_counter()
         actual_ms = (t_end - t_start) * 1000

@@ -1,0 +1,18 @@
+Starting TransferEngine concurrent pull with 3 NPUs...
+[Gloo] Rank 0 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[Gloo] Rank 1 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[Gloo] Rank 2 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[P2P] Status: Error Code: 10, Message: aclError: "19"  in /home/marck/workspace/yuanrong-datasystem/third_party/transfer_engine/third_party/P2P-Transfer/source/npu/RdmaAgent.cpp: 83
+[P2P] Status: Error Code: 10, Message: aclError: "19"  in /home/marck/workspace/yuanrong-datasystem/third_party/transfer_engine/third_party/P2P-Transfer/source/npu/RdmaAgent.cpp: 83
+E20260624 13:49:03.518142 845:845 transfer_engine.cpp:506] build connection init recv failed, peer=127.0.0.1:60550, owner_device_id=0, reason=code=5, msg=P2PCommInitRootInfo(RECV) failed, hccl rc=4, file=/home/marck/workspace/yuanrong-datasystem/third_party/transfer_engine/src/internal/backend/p2p_transfer_backend.cpp, line=92
+E20260624 13:49:03.518527 845:845 transfer_engine.cpp:303] batch sync read build connection failed, reason=code=5, msg=P2PCommInitRootInfo(RECV) failed, hccl rc=4, file=/home/marck/workspace/yuanrong-datasystem/third_party/transfer_engine/src/internal/backend/p2p_transfer_backend.cpp, line=92
+E20260624 13:49:03.518716 844:892 transfer_control_service.cpp:251] owner init failed, peer=127.0.0.1:60551, peer_device_id=1, reason=code=5, msg=P2PCommInitRootInfo(SEND) failed, hccl rc=4, file=/home/marck/workspace/yuanrong-datasystem/third_party/transfer_engine/src/internal/backend/p2p_transfer_backend.cpp, line=92
+[P2P] Status: Error Code: 7, Message: rdma agent is not initialized
+E20260624 13:49:03.527118 844:892 transfer_control_service.cpp:251] owner init failed, peer=127.0.0.1:60552, peer_device_id=2, reason=code=5, msg=P2PCommInitRootInfo(SEND) failed, hccl rc=4, file=/home/marck/workspace/yuanrong-datasystem/third_party/transfer_engine/src/internal/backend/p2p_transfer_backend.cpp, line=92
+[P2P] Status: Error Code: 1, Message: Client disconnected
+E20260624 13:49:03.534331 846:846 transfer_engine.cpp:506] build connection init recv failed, peer=127.0.0.1:60550, owner_device_id=0, reason=code=5, msg=P2PCommInitRootInfo(RECV) failed, hccl rc=4, file=/home/marck/workspace/yuanrong-datasystem/third_party/transfer_engine/src/internal/backend/p2p_transfer_backend.cpp, line=92
+E20260624 13:49:03.534671 846:846 transfer_engine.cpp:303] batch sync read build connection failed, reason=code=5, msg=P2PCommInitRootInfo(RECV) failed, hccl rc=4, file=/home/marck/workspace/yuanrong-datasystem/third_party/transfer_engine/src/internal/backend/p2p_transfer_backend.cpp, line=92
+[Seed] Registered memory at pointer: 20622285471744
+Rank 1 Read Status: code=5, msg=P2PCommInitRootInfo(RECV) failed, hccl rc=4, file=/home/marck/workspace/yuanrong-datasystem/third_party/transfer_engine/src/internal/backend/p2p_transfer_backend.cpp, line=92 | Time: 82.078 ms
+Rank 1 Data Verification: Success
+Rank 2 Read Status: code=5, msg=P2PCommInitRootInfo(RECV) failed, hccl rc=4, file=/home/marck/workspace/yuanrong-datasystem/third_party/transfer_engine/src/internal/backend/p2p_transfer_backend.cpp, line=92 | Time: 98.184 ms
