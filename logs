@@ -1,0 +1,120 @@
+Starting TransferEngine concurrent pull with 3 NPUs...
+[rank2]:[W624 13:21:11.859007621 TCPStore.cpp:138] [c10d] recvValueWithTimeout failed on SocketImpl(fd=22, addr=[::ffff:127.0.0.1]:41360, remote=[::ffff:127.0.0.1]:50003): Failed to recv, got 0 bytes. Connection was likely closed. Did the remote server shutdown or crash?
+Exception raised from recvBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:697 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0xb0 (0xffff737bc700 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x5f285b0 (0xffff793685b0 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: <unknown function> + 0x5f2b744 (0xffff7936b744 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: <unknown function> + 0x5f2c92c (0xffff7936c92c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #4: c10d::TCPStore::doWait(c10::ArrayRef<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::chrono::duration<long, std::ratio<1l, 1000l> >) + 0x168 (0xffff7936eb18 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #5: c10d::TCPStore::doGet(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x2c (0xffff7937035c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #6: c10d::TCPStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0xe8 (0xffff793719c8 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #7: c10d::PrefixStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x3c (0xffff7931f42c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: c10d::PrefixStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x3c (0xffff7931f42c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: c10d::PrefixStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x3c (0xffff7931f42c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: c10d_npu::ProcessGroupHCCL::broadcastMasterID(HcclRootInfoDef*, bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) + 0x220 (0xffff63364a40 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #11: c10d_npu::ProcessGroupHCCL::createHCCLCommOrigin(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<c10::Device, std::allocator<c10::Device> > const&, c10d_npu::HcclCommType, HcclCommConfigDef*, std::vector<std::shared_ptr<c10d_npu::HCCLComm>, std::allocator<std::shared_ptr<c10d_npu::HCCLComm> > >&, std::vector<c10_npu::NPUStream, std::allocator<c10_npu::NPUStream> >&, int) + 0xac (0xffff63365030 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #12: c10d_npu::ProcessGroupHCCL::createHCCLComm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<c10::Device, std::allocator<c10::Device> > const&, c10d_npu::HcclCommType, HcclCommConfigDef*, int) + 0x618 (0xffff63369128 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #13: <unknown function> + 0x2bd8858 (0xffff63398858 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #14: c10d_npu::ProcessGroupHCCL::broadcast(std::vector<at::Tensor, std::allocator<at::Tensor> >&, c10d::BroadcastOptions const&) + 0x7c (0xffff63399b8c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #15: <unknown function> + 0x5ed16fc (0xffff793116fc in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #16: <unknown function> + 0x5ede830 (0xffff7931e830 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: <unknown function> + 0x889998 (0xffff61049998 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #18: <unknown function> + 0x5ef9314 (0xffff79339314 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0x10d1cf4 (0xffff7e881cf4 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_python.so)
+frame #20: <unknown function> + 0x5c626c (0xffff7dd7626c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_python.so)
+<omitting python frames>
+frame #40: <unknown function> + 0x27400 (0xffff81947400 in /lib/aarch64-linux-gnu/libc.so.6)
+frame #41: __libc_start_main + 0x98 (0xffff819474d8 in /lib/aarch64-linux-gnu/libc.so.6)
+frame #42: _start + 0x30 (0xaaaacc0c08b0 in /usr/local/python3.11.14/bin/python3)
+
+[rank1]:[W624 13:21:11.929788715 TCPStore.cpp:138] [c10d] recvValueWithTimeout failed on SocketImpl(fd=23, addr=[::ffff:127.0.0.1]:41374, remote=[::ffff:127.0.0.1]:50003): Failed to recv, got 0 bytes. Connection was likely closed. Did the remote server shutdown or crash?
+Exception raised from recvBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:697 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0xb0 (0xffffaf45c700 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x5f285b0 (0xffffb50085b0 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: <unknown function> + 0x5f2b744 (0xffffb500b744 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: <unknown function> + 0x5f2c92c (0xffffb500c92c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #4: c10d::TCPStore::doWait(c10::ArrayRef<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::chrono::duration<long, std::ratio<1l, 1000l> >) + 0x168 (0xffffb500eb18 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #5: c10d::TCPStore::doGet(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x2c (0xffffb501035c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #6: c10d::TCPStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0xe8 (0xffffb50119c8 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #7: c10d::PrefixStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x3c (0xffffb4fbf42c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: c10d::PrefixStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x3c (0xffffb4fbf42c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: c10d::PrefixStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x3c (0xffffb4fbf42c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: c10d_npu::ProcessGroupHCCL::broadcastMasterID(HcclRootInfoDef*, bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) + 0x220 (0xffff9f004a40 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #11: c10d_npu::ProcessGroupHCCL::createHCCLCommOrigin(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<c10::Device, std::allocator<c10::Device> > const&, c10d_npu::HcclCommType, HcclCommConfigDef*, std::vector<std::shared_ptr<c10d_npu::HCCLComm>, std::allocator<std::shared_ptr<c10d_npu::HCCLComm> > >&, std::vector<c10_npu::NPUStream, std::allocator<c10_npu::NPUStream> >&, int) + 0xac (0xffff9f005030 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #12: c10d_npu::ProcessGroupHCCL::createHCCLComm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<c10::Device, std::allocator<c10::Device> > const&, c10d_npu::HcclCommType, HcclCommConfigDef*, int) + 0x618 (0xffff9f009128 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #13: <unknown function> + 0x2bd8858 (0xffff9f038858 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #14: c10d_npu::ProcessGroupHCCL::broadcast(std::vector<at::Tensor, std::allocator<at::Tensor> >&, c10d::BroadcastOptions const&) + 0x7c (0xffff9f039b8c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #15: <unknown function> + 0x5ed16fc (0xffffb4fb16fc in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #16: <unknown function> + 0x5ede830 (0xffffb4fbe830 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: <unknown function> + 0x889998 (0xffff9cce9998 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #18: <unknown function> + 0x5ef9314 (0xffffb4fd9314 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0x10d1cf4 (0xffffba521cf4 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_python.so)
+frame #20: <unknown function> + 0x5c626c (0xffffb9a1626c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_python.so)
+<omitting python frames>
+frame #40: <unknown function> + 0x27400 (0xffffbd5d7400 in /lib/aarch64-linux-gnu/libc.so.6)
+frame #41: __libc_start_main + 0x98 (0xffffbd5d74d8 in /lib/aarch64-linux-gnu/libc.so.6)
+frame #42: _start + 0x30 (0xaaaadf6108b0 in /usr/local/python3.11.14/bin/python3)
+
+W0624 13:21:15.556000 499 site-packages/torch/multiprocessing/spawn.py:174] Terminating process 504 via signal SIGTERM
+W0624 13:21:15.556000 499 site-packages/torch/multiprocessing/spawn.py:174] Terminating process 506 via signal SIGTERM
+Traceback (most recent call last):
+  File "/workspace/hccl-experiments/transfer-engine-concurrent.py", line 82, in <module>
+    main()
+  File "/workspace/hccl-experiments/transfer-engine-concurrent.py", line 78, in main
+    mp.spawn(run_benchmark, args=(rank_size, ip, port), nprocs=rank_size, join=True)
+  File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 364, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 320, in start_processes
+    while not context.join():
+              ^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 220, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 1 terminated with the following error:
+Traceback (most recent call last):
+  File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 95, in _wrap
+    fn(i, *args)
+  File "/workspace/hccl-experiments/transfer-engine-concurrent.py", line 41, in run_benchmark
+    dist.broadcast_object_list(addr_list, src=root_rank)
+  File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py", line 3691, in broadcast_object_list
+    broadcast(object_sizes_tensor, group_src=group_src, group=group)
+  File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py", line 2835, in broadcast
+    work = group.broadcast([tensor], opts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: [1] is setting up HCCL communicator and retrieving hcclUniqueId from [0] via c10d key-value store by key '0', but store->get('0') got error: Failed to recv, got 0 bytes. Connection was likely closed. Did the remote server shutdown or crash?
+Exception raised from recvBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:697 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0xb0 (0xffffaf45c700 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x5f285b0 (0xffffb50085b0 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: <unknown function> + 0x5f2b744 (0xffffb500b744 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: <unknown function> + 0x5f2c92c (0xffffb500c92c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #4: c10d::TCPStore::doWait(c10::ArrayRef<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::chrono::duration<long, std::ratio<1l, 1000l> >) + 0x168 (0xffffb500eb18 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #5: c10d::TCPStore::doGet(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x2c (0xffffb501035c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #6: c10d::TCPStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0xe8 (0xffffb50119c8 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #7: c10d::PrefixStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x3c (0xffffb4fbf42c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: c10d::PrefixStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x3c (0xffffb4fbf42c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: c10d::PrefixStore::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x3c (0xffffb4fbf42c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: c10d_npu::ProcessGroupHCCL::broadcastMasterID(HcclRootInfoDef*, bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) + 0x220 (0xffff9f004a40 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #11: c10d_npu::ProcessGroupHCCL::createHCCLCommOrigin(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<c10::Device, std::allocator<c10::Device> > const&, c10d_npu::HcclCommType, HcclCommConfigDef*, std::vector<std::shared_ptr<c10d_npu::HCCLComm>, std::allocator<std::shared_ptr<c10d_npu::HCCLComm> > >&, std::vector<c10_npu::NPUStream, std::allocator<c10_npu::NPUStream> >&, int) + 0xac (0xffff9f005030 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #12: c10d_npu::ProcessGroupHCCL::createHCCLComm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<c10::Device, std::allocator<c10::Device> > const&, c10d_npu::HcclCommType, HcclCommConfigDef*, int) + 0x618 (0xffff9f009128 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #13: <unknown function> + 0x2bd8858 (0xffff9f038858 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #14: c10d_npu::ProcessGroupHCCL::broadcast(std::vector<at::Tensor, std::allocator<at::Tensor> >&, c10d::BroadcastOptions const&) + 0x7c (0xffff9f039b8c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #15: <unknown function> + 0x5ed16fc (0xffffb4fb16fc in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #16: <unknown function> + 0x5ede830 (0xffffb4fbe830 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: <unknown function> + 0x889998 (0xffff9cce9998 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/lib/libtorch_npu.so)
+frame #18: <unknown function> + 0x5ef9314 (0xffffb4fd9314 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0x10d1cf4 (0xffffba521cf4 in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_python.so)
+frame #20: <unknown function> + 0x5c626c (0xffffb9a1626c in /usr/local/python3.11.14/lib/python3.11/site-packages/torch/lib/libtorch_python.so)
+<omitting python frames>
+frame #40: <unknown function> + 0x27400 (0xffffbd5d7400 in /lib/aarch64-linux-gnu/libc.so.6)
+frame #41: __libc_start_main + 0x98 (0xffffbd5d74d8 in /lib/aarch64-linux-gnu/libc.so.6)
+frame #42: _start + 0x30 (0xaaaadf6108b0 in /usr/local/python3.11.14/bin/python3)
+. This may indicate a possible application crash on rank 0 or a network set up issue.
+[ERROR] 2026-06-24-13:21:11 (PID:505, Device:1, RankID:-1) ERR02005 DIST internal error
