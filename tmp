@@ -1,0 +1,380 @@
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 845, in compile_wrapper
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     raise e.remove_dynamo_frames() from None  # see TORCHDYNAMO_VERBOSE=1
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/output_graph.py", line 2196, in _call_user_compiler
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     raise BackendCompilerFailed(
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/output_graph.py", line 2171, in _call_user_compiler
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     compiled_fn = compiler_fn(gm, example_inputs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/repro/after_dynamo.py", line 156, in __call__
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     compiled_gm = compiler_fn(gm, example_inputs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/__init__.py", line 2437, in __call__
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return self.compiler_fn(model_, inputs_, **self.kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/contextlib.py", line 81, in inner
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return func(*args, **kwds)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/vllm-workspace/vllm/vllm/compilation/backends.py", line 1063, in __call__
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     self.configure_post_pass()
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/vllm-workspace/vllm/vllm/compilation/backends.py", line 847, in configure_post_pass
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     self.pass_manager.configure(self.vllm_config)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/vllm-workspace/vllm-ascend/vllm_ascend/compilation/graph_fusion_pass_manager.py", line 60, in configure
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     self.passes.append(QKNormRopeFusionPass(config))
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/vllm-workspace/vllm-ascend/vllm_ascend/compilation/passes/qknorm_rope_fusion_pass.py", line 216, in __init__
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     ).register(self.pattern_match_passes)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/vllm-workspace/vllm-ascend/vllm_ascend/compilation/passes/base_pattern.py", line 51, in register
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     torchair.register_replacement(
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/dynamo/torchair/patterns/pattern_pass_manager.py", line 75, in register_replacement
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     _global_pattern_pass_manager.register_pattern(search_fn=search_fn,
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/dynamo/torchair/patterns/pattern_pass_manager.py", line 37, in register_pattern
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     register(
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_inductor/pattern_matcher.py", line 1552, in register_replacement
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     pattern, gm = gen_pattern_and_search_gm(
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/contextlib.py", line 81, in inner
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return func(*args, **kwds)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_inductor/pattern_matcher.py", line 1760, in gen_pattern_and_search_gm
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     search_gm = trace_fn(search_fn, flat_inputs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return func(*args, **kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_inductor/pattern_matcher.py", line 2115, in fwd_only
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     gm = make_fx(fn, decompositions, tracing_mode="real")(*args)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 2429, in wrapped
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return make_fx_tracer.trace(f, *args)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 2356, in trace
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return self._trace_inner(f, *args)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 2318, in _trace_inner
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     t = dispatch_trace(
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]         ^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_compile.py", line 53, in inner
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return disable_fn(*args, **kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 1044, in _fn
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return fn(*args, **kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 1303, in dispatch_trace
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     graph = tracer.trace(root, concrete_args)  # type: ignore[arg-type]
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 1044, in _fn
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return fn(*args, **kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/_symbolic_trace.py", line 868, in trace
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     (self.create_arg(fn(*args)),),
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]                      ^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 1361, in wrapped
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     out = f(*tensors)  # type:ignore[call-arg]
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]           ^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/vllm-workspace/vllm-ascend/vllm_ascend/compilation/passes/qknorm_rope_fusion_pass.py", line 62, in pattern
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     q_norm_out, _ = torch.ops.npu.npu_rms_norm(q_by_head, q_weight, self.eps)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_ops.py", line 1255, in __call__
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return self._op(*args, **kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 1409, in __torch_function__
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return func(*args, **kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_ops.py", line 1255, in __call__
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return self._op(*args, **kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/utils/_stats.py", line 28, in wrapper
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return fn(*args, **kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 1534, in __torch_dispatch__
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return proxy_call(self, func, self.pre_dispatch, args, kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 994, in proxy_call
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     out = func(*args, **kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]           ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_ops.py", line 841, in __call__
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]     return self._op(*args, **kwargs)
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099] torch._dynamo.exc.BackendCompilerFailed: backend='<vllm.compilation.backends.VllmBackend object at 0xfffebb505ed0>' raised:
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099] RuntimeError: The Inner error is reported as above. The process exits for this inner error, and the current working operator name is _triton_rope.
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099] Since the operator is called asynchronously, the stacktrace may be inaccurate. If you want to get the accurate stacktrace, please set the environment variable ASCEND_LAUNCH_BLOCKING=1.
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099] Note: ASCEND_LAUNCH_BLOCKING=1 will force ops to run in synchronous mode, resulting in performance degradation. Please unset ASCEND_LAUNCH_BLOCKING in time after debugging.
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099] [ERROR] 2026-07-01-13:18:50 (PID:323, Device:0, RankID:-1) ERR00100 PTA call acl api failed.
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099] E39999: Inner Error!
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099] E39999[PID: 323] 2026-07-01-13:18:32.496.174 (E39999):  The error from device(chipId:0, dieId:0), serial number is 1, an exception occurred during AICPU execution, stream_id:47, task_id:607, errcode:11002, msg:open so failed.[FUNC:ProcessStarsAicpuErrorInfo][FILE:device_error_proc.cc][LINE:1576]
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]         TraceBack (most recent call last):
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]        Kernel task happen error, retCode=0x2a, [aicpu exception].[FUNC:PreCheckTaskErr][FILE:davinci_kernel_task.cc][LINE:1582]
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]        Aicpu kernel execute failed, device_id=0, stream_id=47, task_id=607, soName=libcpu_kernels.so, funcName=RunCpuKernel, kernelName=OnesLike, errorCode=0x2a.[FUNC:PrintAicpuErrorInfo][FILE:davinci_kernel_task.cc][LINE:1334]
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]        Failed to submit kernel task, retCode=0x715002a.[FUNC:LaunchKernelSubmit][FILE:context.cc][LINE:1189]
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]        kernel launch submit failed.[FUNC:LaunchKernel][FILE:context.cc][LINE:1319]
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]        rtKernelLaunch execution failed, reason=aicpu exception[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:61]
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099] Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+(EngineCore pid=323) ERROR 07-01 13:18:50 [core.py:1099]
+(EngineCore pid=323) Process EngineCore:
+(EngineCore pid=323) Traceback (most recent call last):
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+(EngineCore pid=323)     self.run()
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/multiprocessing/process.py", line 108, in run
+(EngineCore pid=323)     self._target(*self._args, **self._kwargs)
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1103, in run_engine_core
+(EngineCore pid=323)     raise e
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1073, in run_engine_core
+(EngineCore pid=323)     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=323)                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=323)     return func(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 839, in __init__
+(EngineCore pid=323)     super().__init__(
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 122, in __init__
+(EngineCore pid=323)     kv_cache_config = self._initialize_kv_caches(vllm_config)
+(EngineCore pid=323)                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=323)     return func(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 245, in _initialize_kv_caches
+(EngineCore pid=323)     available_gpu_memory = self.model_executor.determine_available_memory()
+(EngineCore pid=323)                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/v1/executor/abstract.py", line 136, in determine_available_memory
+(EngineCore pid=323)     return self.collective_rpc("determine_available_memory")
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/v1/executor/uniproc_executor.py", line 78, in collective_rpc
+(EngineCore pid=323)     result = run_method(self.driver_worker, method, args, kwargs)
+(EngineCore pid=323)              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/v1/serial_utils.py", line 459, in run_method
+(EngineCore pid=323)     return func(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+(EngineCore pid=323)     return func(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/worker.py", line 343, in determine_available_memory
+(EngineCore pid=323)     self.model_runner.profile_run()
+(EngineCore pid=323)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 2553, in profile_run
+(EngineCore pid=323)     super().profile_run()
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/v1/worker/gpu_model_runner.py", line 5516, in profile_run
+(EngineCore pid=323)     hidden_states, last_hidden_states = self._dummy_run(
+(EngineCore pid=323)                                         ^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+(EngineCore pid=323)     return func(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 2495, in _dummy_run
+(EngineCore pid=323)     outputs = self._model_forward(
+(EngineCore pid=323)               ^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 1835, in _model_forward
+(EngineCore pid=323)     hidden_states = run_model()
+(EngineCore pid=323)                     ^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+(EngineCore pid=323)     return self._call_impl(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+(EngineCore pid=323)     return forward_call(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/model_executor/models/qwen3.py", line 322, in forward
+(EngineCore pid=323)     hidden_states = self.model(
+(EngineCore pid=323)                     ^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/compilation/decorators.py", line 597, in __call__
+(EngineCore pid=323)     output = TorchCompileWithNoGuardsWrapper.__call__(
+(EngineCore pid=323)              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/compilation/wrapper.py", line 182, in __call__
+(EngineCore pid=323)     return self._call_with_optional_nvtx_range(
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/compilation/wrapper.py", line 76, in _call_with_optional_nvtx_range
+(EngineCore pid=323)     return callable_fn(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 845, in compile_wrapper
+(EngineCore pid=323)     raise e.remove_dynamo_frames() from None  # see TORCHDYNAMO_VERBOSE=1
+(EngineCore pid=323)     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/output_graph.py", line 2196, in _call_user_compiler
+(EngineCore pid=323)     raise BackendCompilerFailed(
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/output_graph.py", line 2171, in _call_user_compiler
+(EngineCore pid=323)     compiled_fn = compiler_fn(gm, example_inputs)
+(EngineCore pid=323)                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/repro/after_dynamo.py", line 156, in __call__
+(EngineCore pid=323)     compiled_gm = compiler_fn(gm, example_inputs)
+(EngineCore pid=323)                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/__init__.py", line 2437, in __call__
+(EngineCore pid=323)     return self.compiler_fn(model_, inputs_, **self.kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/contextlib.py", line 81, in inner
+(EngineCore pid=323)     return func(*args, **kwds)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/compilation/backends.py", line 1063, in __call__
+(EngineCore pid=323)     self.configure_post_pass()
+(EngineCore pid=323)   File "/vllm-workspace/vllm/vllm/compilation/backends.py", line 847, in configure_post_pass
+(EngineCore pid=323)     self.pass_manager.configure(self.vllm_config)
+(EngineCore pid=323)   File "/vllm-workspace/vllm-ascend/vllm_ascend/compilation/graph_fusion_pass_manager.py", line 60, in configure
+(EngineCore pid=323)     self.passes.append(QKNormRopeFusionPass(config))
+(EngineCore pid=323)                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm-ascend/vllm_ascend/compilation/passes/qknorm_rope_fusion_pass.py", line 216, in __init__
+(EngineCore pid=323)     ).register(self.pattern_match_passes)
+(EngineCore pid=323)       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm-ascend/vllm_ascend/compilation/passes/base_pattern.py", line 51, in register
+(EngineCore pid=323)     torchair.register_replacement(
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/dynamo/torchair/patterns/pattern_pass_manager.py", line 75, in register_replacement
+(EngineCore pid=323)     _global_pattern_pass_manager.register_pattern(search_fn=search_fn,
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch_npu/dynamo/torchair/patterns/pattern_pass_manager.py", line 37, in register_pattern
+(EngineCore pid=323)     register(
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_inductor/pattern_matcher.py", line 1552, in register_replacement
+(EngineCore pid=323)     pattern, gm = gen_pattern_and_search_gm(
+(EngineCore pid=323)                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/contextlib.py", line 81, in inner
+(EngineCore pid=323)     return func(*args, **kwds)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_inductor/pattern_matcher.py", line 1760, in gen_pattern_and_search_gm
+(EngineCore pid=323)     search_gm = trace_fn(search_fn, flat_inputs)
+(EngineCore pid=323)                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+(EngineCore pid=323)     return func(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_inductor/pattern_matcher.py", line 2115, in fwd_only
+(EngineCore pid=323)     gm = make_fx(fn, decompositions, tracing_mode="real")(*args)
+(EngineCore pid=323)          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 2429, in wrapped
+(EngineCore pid=323)     return make_fx_tracer.trace(f, *args)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 2356, in trace
+(EngineCore pid=323)     return self._trace_inner(f, *args)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 2318, in _trace_inner
+(EngineCore pid=323)     t = dispatch_trace(
+(EngineCore pid=323)         ^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_compile.py", line 53, in inner
+(EngineCore pid=323)     return disable_fn(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 1044, in _fn
+(EngineCore pid=323)     return fn(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 1303, in dispatch_trace
+(EngineCore pid=323)     graph = tracer.trace(root, concrete_args)  # type: ignore[arg-type]
+(EngineCore pid=323)             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 1044, in _fn
+(EngineCore pid=323)     return fn(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/_symbolic_trace.py", line 868, in trace
+(EngineCore pid=323)     (self.create_arg(fn(*args)),),
+(EngineCore pid=323)                      ^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 1361, in wrapped
+(EngineCore pid=323)     out = f(*tensors)  # type:ignore[call-arg]
+(EngineCore pid=323)           ^^^^^^^^^^^
+(EngineCore pid=323)   File "/vllm-workspace/vllm-ascend/vllm_ascend/compilation/passes/qknorm_rope_fusion_pass.py", line 62, in pattern
+(EngineCore pid=323)     q_norm_out, _ = torch.ops.npu.npu_rms_norm(q_by_head, q_weight, self.eps)
+(EngineCore pid=323)                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_ops.py", line 1255, in __call__
+(EngineCore pid=323)     return self._op(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 1409, in __torch_function__
+(EngineCore pid=323)     return func(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_ops.py", line 1255, in __call__
+(EngineCore pid=323)     return self._op(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/utils/_stats.py", line 28, in wrapper
+(EngineCore pid=323)     return fn(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 1534, in __torch_dispatch__
+(EngineCore pid=323)     return proxy_call(self, func, self.pre_dispatch, args, kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/fx/experimental/proxy_tensor.py", line 994, in proxy_call
+(EngineCore pid=323)     out = func(*args, **kwargs)
+(EngineCore pid=323)           ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/torch/_ops.py", line 841, in __call__
+(EngineCore pid=323)     return self._op(*args, **kwargs)
+(EngineCore pid=323)            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=323) torch._dynamo.exc.BackendCompilerFailed: backend='<vllm.compilation.backends.VllmBackend object at 0xfffebb505ed0>' raised:
+(EngineCore pid=323) RuntimeError: The Inner error is reported as above. The process exits for this inner error, and the current working operator name is _triton_rope.
+(EngineCore pid=323) Since the operator is called asynchronously, the stacktrace may be inaccurate. If you want to get the accurate stacktrace, please set the environment variable ASCEND_LAUNCH_BLOCKING=1.
+(EngineCore pid=323) Note: ASCEND_LAUNCH_BLOCKING=1 will force ops to run in synchronous mode, resulting in performance degradation. Please unset ASCEND_LAUNCH_BLOCKING in time after debugging.
+(EngineCore pid=323) [ERROR] 2026-07-01-13:18:50 (PID:323, Device:0, RankID:-1) ERR00100 PTA call acl api failed.
+(EngineCore pid=323) E39999: Inner Error!
+(EngineCore pid=323) E39999[PID: 323] 2026-07-01-13:18:32.496.174 (E39999):  The error from device(chipId:0, dieId:0), serial number is 1, an exception occurred during AICPU execution, stream_id:47, task_id:607, errcode:11002, msg:open so failed.[FUNC:ProcessStarsAicpuErrorInfo][FILE:device_error_proc.cc][LINE:1576]
+(EngineCore pid=323)         TraceBack (most recent call last):
+(EngineCore pid=323)        Kernel task happen error, retCode=0x2a, [aicpu exception].[FUNC:PreCheckTaskErr][FILE:davinci_kernel_task.cc][LINE:1582]
+(EngineCore pid=323)        Aicpu kernel execute failed, device_id=0, stream_id=47, task_id=607, soName=libcpu_kernels.so, funcName=RunCpuKernel, kernelName=OnesLike, errorCode=0x2a.[FUNC:PrintAicpuErrorInfo][FILE:davinci_kernel_task.cc][LINE:1334]
+(EngineCore pid=323)        Failed to submit kernel task, retCode=0x715002a.[FUNC:LaunchKernelSubmit][FILE:context.cc][LINE:1189]
+(EngineCore pid=323)        kernel launch submit failed.[FUNC:LaunchKernel][FILE:context.cc][LINE:1319]
+(EngineCore pid=323)        rtKernelLaunch execution failed, reason=aicpu exception[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:61]
+(EngineCore pid=323)
+(EngineCore pid=323)
+(EngineCore pid=323) Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+(EngineCore pid=323)
+[rank0]:[W701 13:18:50.369686526 compiler_depend.ts:595] Warning: NPU warning, error code is 507018[Error]:
+[Error]: The aicpu execution is abnormal.
+        Rectify the fault based on the error information in the ascend log.
+EE9999: Inner Error!
+EE9999[PID: 323] 2026-07-01-13:18:50.964.705 (EE9999):  rtDeviceSynchronizeWithTimeout execution failed, reason=aicpu exception[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:61]
+        TraceBack (most recent call last):
+       wait for compute device to finish failed, runtime result = 507018.[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:148]
+ (function npuSynchronizeUsedDevices)
+[W701 13:18:50.374229239 compiler_depend.ts:577] Warning: NPU warning, error code is 507018[Error]:
+[Error]: The aicpu execution is abnormal.
+        Rectify the fault based on the error information in the ascend log.
+EE9999: Inner Error!
+EE9999[PID: 323] 2026-07-01-13:18:50.969.379 (EE9999):  rtDeviceSynchronizeWithTimeout execution failed, reason=aicpu exception[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:61]
+        TraceBack (most recent call last):
+       wait for compute device to finish failed, runtime result = 507018.[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:148]
+ (function npuSynchronizeDevice)
+(APIServer pid=297) Traceback (most recent call last):
+(APIServer pid=297)   File "/usr/local/python3.11.14/bin/vllm", line 6, in <module>
+(APIServer pid=297)     sys.exit(main())
+(APIServer pid=297)              ^^^^^^
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/entrypoints/cli/main.py", line 75, in main
+(APIServer pid=297)     args.dispatch_function(args)
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/entrypoints/cli/serve.py", line 118, in cmd
+(APIServer pid=297)     uvloop.run(run_server(args))
+(APIServer pid=297)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/uvloop/__init__.py", line 92, in run
+(APIServer pid=297)     return runner.run(wrapper())
+(APIServer pid=297)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=297)   File "/usr/local/python3.11.14/lib/python3.11/asyncio/runners.py", line 118, in run
+(APIServer pid=297)     return self._loop.run_until_complete(task)
+(APIServer pid=297)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=297)   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+(APIServer pid=297)   File "/usr/local/python3.11.14/lib/python3.11/site-packages/uvloop/__init__.py", line 48, in wrapper
+(APIServer pid=297)     return await main
+(APIServer pid=297)            ^^^^^^^^^^
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/entrypoints/openai/api_server.py", line 656, in run_server
+(APIServer pid=297)     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/entrypoints/openai/api_server.py", line 670, in run_server_worker
+(APIServer pid=297)     async with build_async_engine_client(
+(APIServer pid=297)   File "/usr/local/python3.11.14/lib/python3.11/contextlib.py", line 210, in __aenter__
+(APIServer pid=297)     return await anext(self.gen)
+(APIServer pid=297)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/entrypoints/openai/api_server.py", line 103, in build_async_engine_client
+(APIServer pid=297)     async with build_async_engine_client_from_engine_args(
+(APIServer pid=297)   File "/usr/local/python3.11.14/lib/python3.11/contextlib.py", line 210, in __aenter__
+(APIServer pid=297)     return await anext(self.gen)
+(APIServer pid=297)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/entrypoints/openai/api_server.py", line 144, in build_async_engine_client_from_engine_args
+(APIServer pid=297)     async_llm = AsyncLLM.from_vllm_config(
+(APIServer pid=297)                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/v1/engine/async_llm.py", line 225, in from_vllm_config
+(APIServer pid=297)     return cls(
+(APIServer pid=297)            ^^^^
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/v1/engine/async_llm.py", line 154, in __init__
+(APIServer pid=297)     self.engine_core = EngineCoreClient.make_async_mp_client(
+(APIServer pid=297)                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(APIServer pid=297)     return func(*args, **kwargs)
+(APIServer pid=297)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/v1/engine/core_client.py", line 128, in make_async_mp_client
+(APIServer pid=297)     return AsyncMPClient(*client_args)
+(APIServer pid=297)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(APIServer pid=297)     return func(*args, **kwargs)
+(APIServer pid=297)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/v1/engine/core_client.py", line 924, in __init__
+(APIServer pid=297)     super().__init__(
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/v1/engine/core_client.py", line 583, in __init__
+(APIServer pid=297)     with launch_core_engines(
+(APIServer pid=297)   File "/usr/local/python3.11.14/lib/python3.11/contextlib.py", line 144, in __exit__
+(APIServer pid=297)     next(self.gen)
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/v1/engine/utils.py", line 972, in launch_core_engines
+(APIServer pid=297)     wait_for_engine_startup(
+(APIServer pid=297)   File "/vllm-workspace/vllm/vllm/v1/engine/utils.py", line 1031, in wait_for_engine_startup
+(APIServer pid=297)     raise RuntimeError(
+(APIServer pid=297) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+(APIServer pid=297) [ERROR] 2026-07-01-13:18:56 (PID:297, Device:-1, RankID:-1) ERR99999 UNKNOWN applicait
